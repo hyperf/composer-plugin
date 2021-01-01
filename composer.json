@@ -6,7 +6,7 @@
         "php",
         "hyperf"
     ],
-    "description": "",
+    "description": "Composer Plugin for Hyperf",
     "autoload": {
         "psr-4": {
             "Hyperf\\Composer\\Plugin\\": "src/"
@@ -19,7 +19,7 @@
     },
     "require": {
         "php": ">=7.2",
-        "composer-plugin-api": "^2.0"
+        "composer-plugin-api": "^1.0|^2.0"
     },
     "require-dev": {
         "composer/composer": "^2.0",
@@ -40,9 +40,6 @@
         "cs-fix": "php-cs-fixer fix $1"
     },
     "extra": {
-        "hyperf": {
-            "config": "Hyperf\\Composer\\Plugin\\ConfigProvider"
-        },
-        "class": "Hyperf\\Composer\\Plugin"
+        "class": "Hyperf\\Composer\\Plugin\\Plugin"
     }
 }
