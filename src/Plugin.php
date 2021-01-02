@@ -14,6 +14,7 @@ namespace Hyperf\Composer\Plugin;
 use Composer\Composer;
 use Composer\EventDispatcher\EventSubscriberInterface;
 use Composer\IO\IOInterface;
+use Composer\Plugin\PluginEvents;
 use Composer\Plugin\PluginInterface;
 use Composer\Script\ScriptEvents;
 use Hyperf\Composer\Plugin\Event\HandlerInterface;
@@ -42,7 +43,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            ScriptEvents::POST_ROOT_PACKAGE_INSTALL => [
+            PluginEvents::COMMAND => [
                 SortFilesHandler::class,
             ],
         ];
