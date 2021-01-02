@@ -38,13 +38,14 @@ class AutoloadGenerator extends Generator
     {
         $map = parent::sortPackageMap($packageMap);
         $queue = new \SplPriorityQueue();
-        foreach ($map as $item) {
+        foreach ($map as $k => $item) {
             [, $path] = $item;
-            $queue->insert($item, $weith = $this->getSortWeight($path));
+            $queue->insert($item, [$this->getSortWeight($path), PHP_INT_MAX - $k]);
         }
 
         $result = [];
         foreach ($queue as $item) {
+            [, $path] = $item;
             $result[] = $item;
         }
 

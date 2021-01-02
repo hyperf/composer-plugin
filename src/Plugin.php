@@ -16,7 +16,6 @@ use Composer\EventDispatcher\EventSubscriberInterface;
 use Composer\IO\IOInterface;
 use Composer\Plugin\PluginEvents;
 use Composer\Plugin\PluginInterface;
-use Composer\Script\ScriptEvents;
 use Hyperf\Composer\Plugin\Event\HandlerInterface;
 use Hyperf\Composer\Plugin\Event\SortFilesHandler;
 
