@@ -45,7 +45,6 @@ class AutoloadGenerator extends Generator
 
         $result = [];
         foreach ($queue as $item) {
-            [, $path] = $item;
             $result[] = $item;
         }
 
