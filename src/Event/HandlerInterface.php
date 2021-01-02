@@ -16,9 +16,5 @@ use Composer\IO\IOInterface;
 
 interface HandlerInterface
 {
-    public function __construct(Composer $composer, IOInterface $io);
-
-    public function listen(): array;
-
-    public function execute(): void;
+    public function execute(Composer $composer, IOInterface $io): void;
 }

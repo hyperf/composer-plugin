@@ -15,6 +15,9 @@ use Composer\Composer;
 use Composer\EventDispatcher\EventSubscriberInterface;
 use Composer\IO\IOInterface;
 use Composer\Plugin\PluginInterface;
+use Composer\Script\ScriptEvents;
+use Hyperf\Composer\Plugin\Event\HandlerInterface;
+use Hyperf\Composer\Plugin\Event\SortFilesHandler;
 
 class Plugin implements PluginInterface, EventSubscriberInterface
 {
@@ -28,9 +31,21 @@ class Plugin implements PluginInterface, EventSubscriberInterface
      */
     protected $io;
 
+    public function __call(string $name, array $arguments = [])
+    {
+        $handler = new $name();
+        if ($handler instanceof HandlerInterface) {
+            $handler->execute($this->composer, $this->io);
+        }
+    }
+
     public static function getSubscribedEvents()
     {
-        // TODO: Implement getSubscribedEvents() method.
+        return [
+            ScriptEvents::POST_ROOT_PACKAGE_INSTALL => [
+                SortFilesHandler::class,
+            ],
+        ];
     }
 
     public function activate(Composer $composer, IOInterface $io)
@@ -41,11 +56,9 @@ class Plugin implements PluginInterface, EventSubscriberInterface
 
     public function deactivate(Composer $composer, IOInterface $io)
     {
-        // TODO: Implement deactivate() method.
     }
 
     public function uninstall(Composer $composer, IOInterface $io)
     {
-        // TODO: Implement uninstall() method.
     }
 }
