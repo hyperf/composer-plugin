@@ -48,10 +48,6 @@ class AutoloadGenerator extends Generator
             $result[] = $item;
         }
 
-        foreach ($result as $item) {
-            [, $path] = $item;
-            var_dump($path);
-        }
         return $result;
     }
 }
