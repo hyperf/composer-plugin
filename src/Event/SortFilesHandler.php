@@ -32,7 +32,7 @@ class SortFilesHandler implements HandlerInterface
             $property->setAccessible(true);
             $value = $property->getValue($mainGenerator);
             $setter = 'set' . ucfirst($property->getName());
-            if (! is_object($value) && method_exists($generator, $setter)) {
+            if (! is_object($value) && ! is_null($value) && method_exists($generator, $setter)) {
                 $generator->{$setter}($value);
             }
         }
