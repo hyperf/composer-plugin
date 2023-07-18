@@ -23,8 +23,12 @@ class AutoloadGenerator extends Generator
         return $this;
     }
 
-    protected function getSortWeight(string $name): int
+    protected function getSortWeight(?string $name): int
     {
+        if (empty($name)) {
+            return 0;
+        }
+
         foreach ($this->sortWeight as $k => $priority) {
             if (strpos($name, $k) !== false) {
                 return (int) $priority;
